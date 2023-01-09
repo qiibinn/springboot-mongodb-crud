@@ -33,6 +33,17 @@ public class Bird {
     public String getName() {
         return name;
     }
+    
+    public String getColor() {
+        return color;
+    }
+    
+    public String getWeight() {
+        return weight;
+    }
+    public String getHeight() {
+        return height;
+    }
 
     public void setId(String id) {
         this.id = id;
@@ -40,6 +51,18 @@ public class Bird {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
     }
 
 }
