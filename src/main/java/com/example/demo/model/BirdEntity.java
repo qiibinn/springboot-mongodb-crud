@@ -19,12 +19,15 @@ public class BirdEntity {
   private int birdId;
 
   private String name;
-
+  private String color;
   private int weight;
+  private int height;
 
-  public BirdEntity(int birdId, String name, int weight) {
+  public BirdEntity(int birdId, String name, String color, int weight, int height) {
     this.birdId = birdId;
     this.name = name;
+    this.color = color;
     this.weight = weight;
+    this.height = height;
   }
 }
