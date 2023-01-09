@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.dao.PersonDao;
+import com.example.demo.dao.BirdDao;
 import com.example.demo.model.Bird;
 import org.springframework.stereotype.Service;
 
