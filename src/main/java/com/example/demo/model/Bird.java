@@ -14,7 +14,7 @@ public class Bird {
     private String weight;
     private String height;
 
-    public Person(@JsonProperty("id") String id,
+    public Bird(@JsonProperty("id") String id,
                   @JsonProperty("name") String name,
                   @JsonProperty("color") String color,
                   @JsonProperty("weight") String weight,
