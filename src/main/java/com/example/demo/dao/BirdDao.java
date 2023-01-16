@@ -51,7 +51,7 @@ public class BirdDao {
     public Bird updateBirdUsingId(String id, Bird bird) {
         Optional<Bird> findBirdQuery = birdRepository.findById(id);
         Bird birdValues = findBirdQuery.get();
-        birdValues.setId(bird.getId());
+//         birdValues.setId(bird.getId());
         birdValues.setName(bird.getName());
         birdValues.setColor(bird.getColor());
         birdValues.setWeight(bird.getWeight());
@@ -59,9 +59,35 @@ public class BirdDao {
         return birdRepository.save(birdValues);
     }
 
+    public Collection<Bird> updateBirdUsingName(String name, Bird bird) {
+        Collection<Bird> findBirdQuery = getAllBirdINformationByName(name);
+        while (findBirdQuery.hasNext()) {
+            Bird birdValues = findBirdQuery.next();
+//         birdValues.setId(bird.getId());
+            birdValues.setName(bird.getName());
+            birdValues.setColor(bird.getColor());
+            birdValues.setWeight(bird.getWeight());
+            birdValues.setHeight(bird.getHeight());
+            birdRepository.save(birdValues);
+        }
+        return getAllBirdINformationByName(name);
+    }
+    
     public void deleteBirdUsingId(String id) {
         try {
             birdRepository.deleteById(id);
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void deleteBirdUsingName(String name) {
+        try {
+            Collection<Bird> findBirdQuery = getAllBirdINformationByName(name);
+            while (findBirdQuery.hasNext()) {
+                Bird birdValues = findBirdQuery.next();
+                birdRepository.deleteById(birdValues.getId());
+            }
         } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
