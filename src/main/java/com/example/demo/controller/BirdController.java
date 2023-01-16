@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("bird")
+@RequestMapping("birds")
 public class BirdController {
 
     private final BirdService birdService;
