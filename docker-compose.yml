@@ -1,7 +1,39 @@
-version: '3.2'
+#version: '3.2'
+version: '3.8' ## Latest version works with Docker Engine release 18.06.0+
 
 services:
+  # Start - Core services
+  ## Start - Product service definition
+  product:
+    build: store-services/product-service
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker,streaming_partitioned,streaming_instance_0,kafka
+      # config server credentials
+      - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
+      - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
+    depends_on:
+      - mongodb
+    restart: on-failure
+  ## End - Product service definition  
+    
+  #mongodb:
+  #  image: mongo
+  #  ports:
+  #  - 27017:27017
+    
+  # Start - Data and transport Infrastructure
+  ## Start - mongodb database definition
+  ### $ mongo
   mongodb:
-    image: mongo
+    image: mongo:4.2.6-bionic
     ports:
-    - 27017:27017
+      - "27017:27017"
+    healthcheck:
+      test: "mongo --eval 'db.stats().ok'"
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+    restart: on-failure
+  ## End - mongodb database definition
+  # End - Data and transport Infrastructure
