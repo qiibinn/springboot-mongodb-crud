@@ -24,6 +24,14 @@ public class BirdService {
         return birdDao.getAllBirdInformation();
     }
 
+    public Collection<Bird> getAllBirdInformationByColor(String color) {
+        return birdDao.getAllBirdInformation(color);
+    }
+
+    public Collection<Bird> getAllBirdInformationByNameAndColor(String name, String color) {
+        return birdDao.getAllBirdInformation(name, color);
+    }
+
     public Optional<Bird> getBirdInformationUsingId(String id) {
         return birdDao.getBirdInformationById(id);
     }
