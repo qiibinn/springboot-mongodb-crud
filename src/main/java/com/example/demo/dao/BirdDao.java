@@ -29,6 +29,25 @@ public class BirdDao {
         return birdRepository.findById(id);
     }
 
+    public Collection<Bird> getAllBirdInformationByColor(String color) {
+        Bird bird = new Bird();
+        bird.setColor(color);
+        return birdRepository.findAll(bird);
+    }
+
+    public Collection<Bird> getAllBirdInformationByName(String name) {
+        Bird bird = new Bird();
+        bird.setName(name);
+        return birdRepository.findAll(bird);
+    }
+
+    public Collection<Bird> getAllBirdInformationByNameAndColor(String name, String color) {
+        Bird bird = new Bird();
+        bird.setName(name);
+        bird.setColor(color);
+        return birdRepository.findAll(bird);
+    }
+    
     public Bird updateBirdUsingId(String id, Bird bird) {
         Optional<Bird> findBirdQuery = birdRepository.findById(id);
         Bird birdValues = findBirdQuery.get();
