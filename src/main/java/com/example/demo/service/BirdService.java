@@ -40,8 +40,15 @@ public class BirdService {
          birdDao.updateBirdUsingId(id, bird);
     }
 
+    public void updateBirdUsingName(String name, Bird bird) {
+         birdDao.updateBirdUsingName(name, bird);
+    }
+
     public void deleteBirdUsingId(String id) {
         birdDao.deleteBirdUsingId(id);
     }
 
+    public void deleteBirdUsingName(String name) {
+        birdDao.deleteBirdUsingName(name);
+    }
 }
