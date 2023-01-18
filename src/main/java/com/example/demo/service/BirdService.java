@@ -24,31 +24,24 @@ public class BirdService {
         return birdDao.getAllBirdInformation();
     }
 
-    public Collection<Bird> getAllBirdInformationByColor(String color) {
-        return birdDao.getAllBirdInformation(color);
+    public Collection<Bird> getAllBirdInformationUsingColor(String color) {
+        return birdDao.getAllBirdInformationByColor(color);
     }
 
-    public Collection<Bird> getAllBirdInformationByNameAndColor(String name, String color) {
-        return birdDao.getAllBirdInformation(name, color);
+    public Collection<Bird> getAllBirdInformationUsingNameAndColor(String name, String color) {
+        return birdDao.getAllBirdInformationByNameAndColor(name, color);
     }
 
-    public Optional<Bird> getBirdInformationUsingId(String id) {
-        return birdDao.getBirdInformationById(id);
-    }
-
-    public void updateBirdUsingId(String id, Bird bird) {
-         birdDao.updateBirdUsingId(id, bird);
+    public Optional<Bird> getBirdInformationUsingName(String name) {
+        return birdDao.getBirdInformationByName(name);
     }
 
     public void updateBirdUsingName(String name, Bird bird) {
          birdDao.updateBirdUsingName(name, bird);
     }
 
-    public void deleteBirdUsingId(String id) {
-        birdDao.deleteBirdUsingId(id);
-    }
-
     public void deleteBirdUsingName(String name) {
         birdDao.deleteBirdUsingName(name);
     }
+
 }
