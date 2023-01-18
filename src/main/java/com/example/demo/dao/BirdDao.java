@@ -25,33 +25,21 @@ public class BirdDao {
         return birdRepository.findAll();
     }
 
-    public Optional<Bird> getBirdInformationById(String id) {
-        return birdRepository.findById(id);
-    }
-
     public Collection<Bird> getAllBirdInformationByColor(String color) {
-        Bird bird = new Bird();
-        bird.setColor(color);
-        return birdRepository.findAll(bird);
+        return birdRepository.findByColor(color);
     }
 
-    public Collection<Bird> getAllBirdInformationByName(String name) {
-        Bird bird = new Bird();
-        bird.setName(name);
-        return birdRepository.findAll(bird);
+    public Optional<Bird> getAllBirdInformationByName(String name) {
+        return birdRepository.findByName(name);
     }
 
     public Collection<Bird> getAllBirdInformationByNameAndColor(String name, String color) {
-        Bird bird = new Bird();
-        bird.setName(name);
-        bird.setColor(color);
-        return birdRepository.findAll(bird);
+        return birdRepository.findByNameAndColor(name, color);
     }
     
-    public Bird updateBirdUsingId(String id, Bird bird) {
-        Optional<Bird> findBirdQuery = birdRepository.findById(id);
+    public Bird updateBirdUsingName(String name, Bird bird) {
+        Optional<Bird> findBirdQuery = birdRepository.findByName(name);
         Bird birdValues = findBirdQuery.get();
-//         birdValues.setId(bird.getId());
         birdValues.setName(bird.getName());
         birdValues.setColor(bird.getColor());
         birdValues.setWeight(bird.getWeight());
@@ -59,38 +47,12 @@ public class BirdDao {
         return birdRepository.save(birdValues);
     }
 
-    public Collection<Bird> updateBirdUsingName(String name, Bird bird) {
-        Collection<Bird> findBirdQuery = getAllBirdINformationByName(name);
-        while (findBirdQuery.hasNext()) {
-            Bird birdValues = findBirdQuery.next();
-//         birdValues.setId(bird.getId());
-            birdValues.setName(bird.getName());
-            birdValues.setColor(bird.getColor());
-            birdValues.setWeight(bird.getWeight());
-            birdValues.setHeight(bird.getHeight());
-            birdRepository.save(birdValues);
-        }
-        return getAllBirdINformationByName(name);
-    }
-    
-    public void deleteBirdUsingId(String id) {
-        try {
-            birdRepository.deleteById(id);
-        } catch (NoSuchElementException e) {
-            e.printStackTrace();
-        }
-    }
-    
     public void deleteBirdUsingName(String name) {
         try {
-            Collection<Bird> findBirdQuery = getAllBirdINformationByName(name);
-            while (findBirdQuery.hasNext()) {
-                Bird birdValues = findBirdQuery.next();
-                birdRepository.deleteById(birdValues.getId());
-            }
+            birdRepository.deleteByName(name);
         } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
     }
-
+    
 }
