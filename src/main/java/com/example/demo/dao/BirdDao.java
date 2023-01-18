@@ -40,7 +40,6 @@ public class BirdDao {
     public Bird updateBirdUsingName(String name, Bird bird) {
         Optional<Bird> findBirdQuery = birdRepository.findByName(name);
         Bird birdValues = findBirdQuery.get();
-        birdValues.setName(bird.getName());
         birdValues.setColor(bird.getColor());
         birdValues.setWeight(bird.getWeight());
         birdValues.setHeight(bird.getHeight());
