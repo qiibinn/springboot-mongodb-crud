@@ -7,27 +7,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Bird")
 public class Bird {
-    @Id
-    private String id;
     private String name;
     private String color;
     private String weight;
     private String height;
 
-    public Bird(@JsonProperty("id") String id,
-                  @JsonProperty("name") String name,
-                  @JsonProperty("color") String color,
-                  @JsonProperty("weight") String weight,
-                  @JsonProperty("height") String height) {
-        this.id = id;
+    public Bird(@JsonProperty("name") String name,
+                @JsonProperty("color") String color,
+                @JsonProperty("weight") String weight,
+                @JsonProperty("height") String height) {
         this.name = name;
         this.color = color;
         this.weight = weight;
         this.height = height;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public String getName() {
@@ -43,10 +35,6 @@ public class Bird {
     }
     public String getHeight() {
         return height;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public void setName(String name) {
