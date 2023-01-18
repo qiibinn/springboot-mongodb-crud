@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("sighting")
+@RequestMapping("sightings")
 public class SightingController {
 
     private final SightingService sightingService;
@@ -27,9 +27,19 @@ public class SightingController {
         return sightingService.getAllSightingInformation();
     }
 
-    @GetMapping(path = "{id}")
-    public Optional<Sighting> readQueryUsingId(@PathVariable("id") String id) {
-        return sightingService.getSightingInformationUsingId(id);
+    @GetMapping(path = "/bird/{birdName}")
+    public Collection<Sighting> readQueryUsingBirdName(@PathVariable("birdName") String birdName) {
+        return sightingService.getSightingInformationUsingBirdName(birdName);
+    }
+
+    @GetMapping(path = "/location/{location}")
+    public Collection<Sighting> readQueryUsingLocation(@PathVariable("location") String location) {
+        return sightingService.getSightingInformationUsingLocation(location);
+    }
+    
+    @GetMapping(path = "/bird/{birdName}/location/{location}")
+    public Collection<Sighting> readQueryUsingBirdNameAndLocation(@PathVariable("birdName") String birdName,@PathVariable("location") String location) {
+        return sightingService.getSightingInformationUsingBirdNameAndLocation(birdName, location);
     }
 
     @PutMapping(path = "/update/{id}")
