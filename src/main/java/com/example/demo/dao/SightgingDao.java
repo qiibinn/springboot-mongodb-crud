@@ -40,7 +40,6 @@ public class SightingDao {
     public Sighting updateSightingUsingId(String id, Sighting sighting) {
         Optional<Sighting> findSightingQuery = sightingRepository.findById(id);
         Sighting sightingValues = findSightingQuery.get();
-        sightingValues.setId(sighting.getId());
         sightingValues.setBirdName(sighting.getBirdName());
         sightingValues.setLocation(sighting.getLocation());
         sightingValues.setDatetime(sighting.getDatetime());
