@@ -7,28 +7,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Sighting")
 public class Sighting {
-    @Id
-    private String id;
-    private String birdId;
+    private String birdName;
     private String location;
     private String datetime;
 
-    public Person(@JsonProperty("id") String id,
-                  @JsonProperty("birdId") String birdId,
+    public Person(@JsonProperty("birdName") String birdName,
                   @JsonProperty("location") String location,
                   @JsonProperty("datetime") String datetime) {
-        this.id = id;
-        this.birdId = birdId;
+        this.birdName = birdName;
         this.location = location;
         this.datetime = datetime;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public String getBirdId() {
-        return birdId;
+    public String getBirdName() {
+        return birdName;
     }
 
     public String getLocation() {
@@ -38,13 +30,9 @@ public class Sighting {
     public String getDatetime() {
         return datetime;
     }
-  
-    public void setId(String id) {
-        this.id = id;
-    }
 
-    public void setBirdId(String birdId) {
-        this.birdId = birdId;
+    public void setBirdName(String birdName) {
+        this.birdName = birdName;
     }
 
     public void setLocation(String location) {
