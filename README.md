@@ -43,17 +43,17 @@ curl -v docker-app-host:8888/birds
 
 ## Query birds by color:
 ```
-curl -v docker-app-host:8888/birds?color=red
+curl -v docker-app-host:8888/birds/color/red
 ```
 
 ## Query birds by name:
 ```
-curl -v docker-app-host:8888/birds?name=bird-name1
+curl -v docker-app-host:8888/birds/name/bird-name1
 ```
 
 ## Query birds by name and color:
 ```
-curl -v "docker-app-host:8888/birds?name=bird-name1&color=red"
+curl -v "docker-app-host:8888/birds/name/bird-name1/color/red"
 ```
 
 
@@ -79,12 +79,12 @@ curl -v "docker-app-host:8888/sightings?location=location-1&bird=bird-name1"
 
 ## Update bird by name:
 ```
-curl -v -X PUT docker-app-host:8888/birds/bird-name1 -d "{\"name\": \"bird-name1\",\"color\": \"blue\",\"weight\": 10,\"height\": 20}" -H "Content-Type:application/json"
+curl -v -X PUT docker-app-host:8888/birds/update/name/bird-name1 -d "{\"name\": \"bird-name1\",\"color\": \"blue\",\"weight\": 10,\"height\": 20}" -H "Content-Type:application/json"
 ```
 
 ## Delete bird by name:
 ```
-curl -v -X DELETE docker-app-host:8888/birds/bird-name3
+curl -v -X DELETE docker-app-host:8888/birds/delete/name/bird-name3
 ```
 
 ## Update sighting by id.
