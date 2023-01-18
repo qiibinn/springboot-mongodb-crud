@@ -32,8 +32,9 @@ curl -v -X POST docker-app-host:8888/birds -d "{\"name\": \"bird-name3\",\"color
 
 ## Create new sightings associated with the bird created previously.
 ```
-curl -v -X POST docker-app-host:8888/sightings?birds=bird-name1,bird-name2 -d "{\"location\": \"location-1\",\"date\": \"2022-10-13\"}" -H "Content-Type:application/json"
-curl -v -X POST docker-app-host:8888/sightings?birds=bird-name3 -d "{\"location\": \"location-1\",\"date\": \"2022-10-13\"}" -H "Content-Type:application/json"
+curl -v -X POST docker-app-host:8888/sightings -d "{\"id\": \"1\",\"birdName\": \"bird-name1\",\"location\": \"location-1\",\"datetime\": \"2022-10-13\"}" -H "Content-Type:application/json"
+curl -v -X POST docker-app-host:8888/sightings -d "{\"id\": \"2\",\"birdName\": \"bird-name2\",\"location\": \"location-1\",\"datetime\": \"2022-10-13\"}" -H "Content-Type:application/json"
+curl -v -X POST docker-app-host:8888/sightings -d "{\"id\": \"3\",\"birdName\": \"bird-name3\",\"location\": \"location-1\",\"datetime\": \"2022-10-13\"}" -H "Content-Type:application/json"
 ```
 
 ## List all birds:
@@ -64,17 +65,17 @@ curl -v docker-app-host:8888/sightings
 
 ## Query sighting by bird name:
 ```
-curl -v docker-app-host:8888/sightings?bird=bird-name1
+curl -v docker-app-host:8888/sightings/bird/bird-name1
 ```
 
 ## Query sighting by location:
 ```
-curl -v docker-app-host:8888/sightings?location=location-1
+curl -v docker-app-host:8888/sightings/location/location-1
 ```
 
 ## Query sighting by location and bird name:
 ```
-curl -v "docker-app-host:8888/sightings?location=location-1&bird=bird-name1"
+curl -v "docker-app-host:8888/sightings/location/location-1/bird/bird-name1"
 ```
 
 ## Update bird by name:
@@ -89,7 +90,7 @@ curl -v -X DELETE docker-app-host:8888/birds/delete/name/bird-name3
 
 ## Update sighting by id.
 ```
-curl -v -X PUT docker-app-host:8888/sightings/1?birds=bird-name1 -d "{\"location\": \"location-3\",\"date\": \"2022-10-13\"}" -H "Content-Type:application/json"
+curl -v -X PUT docker-app-host:8888/sightings/1 -d "{\"birdName\": \"bird-name3\",\"location\": \"location-3\",\"date\": \"2022-10-13\"}" -H "Content-Type:application/json"
 ```
 
 ## Delete sighting by id:
