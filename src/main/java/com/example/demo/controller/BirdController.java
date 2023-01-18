@@ -27,18 +27,28 @@ public class BirdController {
         return birdService.getAllBirdInformation();
     }
 
-    @GetMapping(path = "{id}")
-    public Optional<Bird> readQueryUsingId(@PathVariable("id") String id) {
-        return birdService.getBirdInformationUsingId(id);
+    @GetMapping(path = "/color/{color}")
+    public Collection<Bird> readQueryUsingColor(@PathVariable("color") String color) {
+        return birdService.getBirdInformationUsingColor(color);
+    }
+    
+    @GetMapping(path = "/name/{name}")
+    public Collection<Bird> readQueryUsingName(@PathVariable("name") String name) {
+        return birdService.getBirdInformationUsingName(name);
+    }
+    
+    @GetMapping(path = "/name/{name}/color/{color}")
+    public Collection<Bird> readQueryUsingNameAndColor(@PathVariable("name") String name, @PathVariable("color") String color) {
+        return birdService.getBirdInformationUsingNameAndColor(name, color);
     }
 
-    @PutMapping(path = "/update/{id}")
-    public void update(@PathVariable String id, @RequestBody Bird bird ) {
-        birdService.updateBirdUsingId(id, bird);
+    @PutMapping(path = "/update/name/{name}")
+    public void update(@PathVariable("name") String name, @RequestBody Bird bird ) {
+        birdService.updateBirdUsingName(name, bird);
     }
 
-    @DeleteMapping(path = "/delete/{id}")
-    public void delete(@PathVariable("id") String id){
-        birdService.deleteBirdUsingId(id);
+    @DeleteMapping(path = "/delete/name/{name}")
+    public void delete(@PathVariable("name") String name){
+        birdService.deleteBirdUsingName(name);
     }
 }
