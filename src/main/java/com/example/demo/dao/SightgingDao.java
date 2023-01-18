@@ -25,15 +25,22 @@ public class SightingDao {
         return sightingRepository.findAll();
     }
 
-    public Optional<Sighting> getSightingInformationById(String id) {
-        return sightingRepository.findById(id);
+    public Collection<Sighting> getSightingInformationByBirdName(String birdName) {
+        return sightingRepository.findByBirdName(birdName);
+    }
+
+    public Collection<Sighting> getSightingInformationByLocation(String location) {
+        return sightingRepository.findByLocation(location);
+    }
+
+    public Collection<Sighting> getSightingInformationByBirdNameAndLocation(String location) {
+        return sightingRepository.findByBirdNameAndLocation(birdName, location);
     }
 
     public Sighting updateSightingUsingId(String id, Sighting sighting) {
         Optional<Sighting> findSightingQuery = sightingRepository.findById(id);
         Sighting sightingValues = findSightingQuery.get();
-        sightingValues.setId(sighting.getId());
-        sightingValues.setBirdId(sighting.getBirdId());
+        sightingValues.setBirdName(sighting.getBirdName());
         sightingValues.setLocation(sighting.getLocation());
         sightingValues.setDatetime(sighting.getDatetime());
         return sightingRepository.save(sightingValues);
