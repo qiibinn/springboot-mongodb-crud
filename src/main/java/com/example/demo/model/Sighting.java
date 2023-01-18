@@ -7,13 +7,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Sighting")
 public class Sighting {
+    private String id;
     private String birdName;
     private String location;
     private String datetime;
 
-    public Person(@JsonProperty("birdName") String birdName,
-                  @JsonProperty("location") String location,
-                  @JsonProperty("datetime") String datetime) {
+    public Sighting(@JsonProperty("birdName") String birdName,
+                    @JsonProperty("location") String location,
+                    @JsonProperty("datetime") String datetime) {
         this.birdName = birdName;
         this.location = location;
         this.datetime = datetime;
