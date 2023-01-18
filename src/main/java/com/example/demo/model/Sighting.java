@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Sighting")
 public class Sighting {
-    private String id;
     private String birdName;
     private String location;
     private String datetime;
