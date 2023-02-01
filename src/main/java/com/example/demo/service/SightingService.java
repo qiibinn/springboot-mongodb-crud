@@ -28,6 +28,18 @@ public class SightingService {
         return sightingDao.getSightingInformationById(id);
     }
 
+    public Collection<Sighting> getAllSightingInformationUsingBirdName(String birdName) {
+        return sightingDao.getSightingInformationByBirdName(birdName);
+    }
+
+    public Collection<Sighting> getAllSightingInformationUsingLocation(String location) {
+        return sightingDao.getSightingInformationByLocation(location);
+    }
+
+    public Collection<Sighting> getAllSightingInformationUsingBirdNameAndLocation(String birdName, String location) {
+        return sightingDao.getSightingInformationByBirdNameAndLocation(birdName, location);
+    }
+
     public void updateSightingUsingId(String id, Sighting sighting) {
          sightingDao.updateSightingUsingId(id, sighting);
     }
