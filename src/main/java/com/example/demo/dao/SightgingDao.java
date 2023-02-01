@@ -1,7 +1,6 @@
 package com.example.demo.dao;
 
 import com.example.demo.model.Sighting;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -25,6 +24,10 @@ public class SightingDao {
         return sightingRepository.findAll();
     }
 
+    public Optional<Sighting> getSightingInformationById(String id) {
+        return sightingRepository.findById(id);
+    }
+
     public Collection<Sighting> getSightingInformationByBirdName(String birdName) {
         return sightingRepository.findByBirdName(birdName);
     }
@@ -33,7 +36,7 @@ public class SightingDao {
         return sightingRepository.findByLocation(location);
     }
 
-    public Collection<Sighting> getSightingInformationByBirdNameAndLocation(String location) {
+    public Collection<Sighting> getSightingInformationByBirdNameAndLocation(String birdName, String location) {
         return sightingRepository.findByBirdNameAndLocation(birdName, location);
     }
 
