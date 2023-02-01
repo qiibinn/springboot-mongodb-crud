@@ -2,11 +2,9 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Sighting;
 import com.example.demo.service.SightingService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("sightings")
@@ -18,7 +16,7 @@ public class SightingController {
     }
 
     @PostMapping
-    public Bird create(@RequestBody Sighting sighting) {
+    public Sighting create(@RequestBody Sighting sighting) {
         return sightingService.insertSightingData(sighting);
     }
 
@@ -29,17 +27,17 @@ public class SightingController {
 
     @GetMapping(path = "/bird/{birdName}")
     public Collection<Sighting> readQueryUsingBirdName(@PathVariable("birdName") String birdName) {
-        return sightingService.getSightingInformationUsingBirdName(birdName);
+        return sightingService.getAllSightingInformationUsingBirdName(birdName);
     }
 
     @GetMapping(path = "/location/{location}")
     public Collection<Sighting> readQueryUsingLocation(@PathVariable("location") String location) {
-        return sightingService.getSightingInformationUsingLocation(location);
+        return sightingService.getAllSightingInformationUsingLocation(location);
     }
     
     @GetMapping(path = "/bird/{birdName}/location/{location}")
     public Collection<Sighting> readQueryUsingBirdNameAndLocation(@PathVariable("birdName") String birdName,@PathVariable("location") String location) {
-        return sightingService.getSightingInformationUsingBirdNameAndLocation(birdName, location);
+        return sightingService.getAllSightingInformationUsingBirdNameAndLocation(birdName, location);
     }
 
     @PutMapping(path = "/update/{id}")
