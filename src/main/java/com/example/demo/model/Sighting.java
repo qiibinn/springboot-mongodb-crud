@@ -1,9 +1,7 @@
 package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 
 @Document(collection = "Sighting")
 public class Sighting {
@@ -11,6 +9,13 @@ public class Sighting {
     private String birdName;
     private String location;
     private String datetime;
+
+    public Sighting() {
+        this.id = null;
+        this.birdName = null;
+        this.location = null;
+        this.datetime = null;
+    }
 
     public Sighting(@JsonProperty("id") String id,
                     @JsonProperty("birdName") String birdName,
