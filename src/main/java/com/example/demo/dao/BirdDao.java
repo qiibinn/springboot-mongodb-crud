@@ -1,7 +1,6 @@
 package com.example.demo.dao;
 
 import com.example.demo.model.Bird;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
@@ -29,7 +28,7 @@ public class BirdDao {
         return birdRepository.findByColor(color);
     }
 
-    public Optional<Bird> getAllBirdInformationByName(String name) {
+    public Optional<Bird> getBirdInformationByName(String name) {
         return birdRepository.findByName(name);
     }
 
@@ -38,7 +37,7 @@ public class BirdDao {
     }
     
     public Bird updateBirdUsingName(String name, Bird bird) {
-        Optional<Bird> findBirdQuery = birdRepository.findByName(name);
+        Optional<Bird> findBirdQuery = getBirdInformationByName(name);
         Bird birdValues = findBirdQuery.get();
         birdValues.setColor(bird.getColor());
         birdValues.setWeight(bird.getWeight());
@@ -48,7 +47,9 @@ public class BirdDao {
 
     public void deleteBirdUsingName(String name) {
         try {
-            birdRepository.deleteByName(name);
+            Bird bird = new Bird();
+            bird.setName(name);
+            birdRepository.delete(bird);
         } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
