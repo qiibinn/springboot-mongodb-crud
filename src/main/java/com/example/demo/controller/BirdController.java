@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Bird;
 import com.example.demo.service.BirdService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -29,17 +28,17 @@ public class BirdController {
 
     @GetMapping(path = "/color/{color}")
     public Collection<Bird> readQueryUsingColor(@PathVariable("color") String color) {
-        return birdService.getBirdInformationUsingColor(color);
+        return birdService.getAllBirdInformationUsingColor(color);
     }
     
     @GetMapping(path = "/name/{name}")
-    public Collection<Bird> readQueryUsingName(@PathVariable("name") String name) {
+    public Optional<Bird> readQueryUsingName(@PathVariable("name") String name) {
         return birdService.getBirdInformationUsingName(name);
     }
     
     @GetMapping(path = "/name/{name}/color/{color}")
     public Collection<Bird> readQueryUsingNameAndColor(@PathVariable("name") String name, @PathVariable("color") String color) {
-        return birdService.getBirdInformationUsingNameAndColor(name, color);
+        return birdService.getAllBirdInformationUsingNameAndColor(name, color);
     }
 
     @PutMapping(path = "/update/name/{name}")
